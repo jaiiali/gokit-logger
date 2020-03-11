@@ -1,0 +1,37 @@
+image: golang:latest
+
+stages:
+    - test
+    - qualify
+
+before_script:
+    - make mod
+
+test:
+  stage: test
+  tags:
+    - docker
+  script:
+    - make test
+
+race_detector:
+  stage: test
+  tags:
+    - docker
+  script:
+    - make race
+
+coverage:
+  stage: test
+  tags:
+    - docker
+  script:
+    - make coverage
+
+lint:
+  stage: qualify
+  image: golangci/golangci-lint:latest
+  tags:
+    - docker
+  script:
+    - make lint
