@@ -1,4 +1,4 @@
-# GoKit Logger
+# GoKit Multi Logger
 
 ## Install
 
